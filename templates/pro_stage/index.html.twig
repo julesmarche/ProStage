@@ -4,15 +4,13 @@
 
 {% block body %}
 
-<h1> Bienvenue sur ProStage, votre site pour trouver votre stage</h1>
-
-<p>
-    <ul>
-        <li><a href="entreprises">Filtrer par entreprises</a></li>
-        <li><a href="formations">Filtrer par formations</a></li>
-    </ul>
 
 
-</p>
+<ul>
+        <li><a href="{{path('pro_stage_stages',{id:1})}}"> Stage 1</a></li>
+        <li><a href="{{path('pro_stage_stages',{id:2})}}"> Stage 2</a></li>
+		<li><a href="{{path('pro_stage_stages',{id:3})}}"> Stage 3</a></li>
+        <li><a href="{{path('pro_stage_stages',{id:4})}}"> Stage 4</a></li>
+ </ul>
 
 {% endblock %}

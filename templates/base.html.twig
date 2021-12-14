@@ -14,13 +14,16 @@
         {% endblock %}
     </head>
     <body>
+		<h1> Bienvenue sur ProStage, votre site pour trouver votre stage</h1>
+		{% block menu %}
+        <ul>
+			<li><a href="entreprises">Filtrer par entreprises</a></li>
+			<li><a href="formations">Filtrer par formations</a></li>
+		</ul>
+        {% endblock %}
         {% block body %}
         <h1>ok</h1>
         {% endblock %}
-        {% block menu %}
-        <p>
-        entreprises
-        </p>
-        {% endblock %}
+       
     </body>
 </html>
