@@ -37,4 +37,13 @@ class ProStageController extends AbstractController
             //'controller_name' => 'Cette page affichera la liste des formations de l\'IUT',
         ]);
     }
+	
+	/**
+     * @Route("/stages", name="pro_stage_formations")
+     */
+    public function stages(): Response
+    {
+        return $this->render('pro_stage/stages.html.twig', 
+		['id_stages' => 1]);
+    }
 }
