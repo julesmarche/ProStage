@@ -39,7 +39,7 @@ class ProStageController extends AbstractController
     }
 	
 	/**
-     * @Route("/stages/{id}", name="pro_stage_stages")
+     * @Route("/stage/{id}", name="pro_stage_stages")
      */
     public function stages($id): Response
     {
