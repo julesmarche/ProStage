@@ -1,16 +1,13 @@
 {% extends 'base.html.twig' %}
 
 
-
 {% block contenu %}
 
 
-
-<ul>
-        <li><a href="{{path('pro_stage_stages',{id:1})}}"> Stage 1</a></li>
-        <li><a href="{{path('pro_stage_stages',{id:2})}}"> Stage 2</a></li>
-		<li><a href="{{path('pro_stage_stages',{id:3})}}"> Stage 3</a></li>
-        <li><a href="{{path('pro_stage_stages',{id:4})}}"> Stage 4</a></li>
- </ul>
-
+<a href="{{path('pro_stage_stages',{id:1})}}"> Stage 1</a>
+<a href="{{path('pro_stage_stages',{id:2})}}"> Stage 2</a>
+<a href="{{path('pro_stage_stages',{id:3})}}"> Stage 3</a>
+<a href="{{path('pro_stage_stages',{id:4})}}"> Stage 4</a>
+ 
 {% endblock %}
+
