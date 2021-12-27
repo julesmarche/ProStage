@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,19 +20,35 @@ class Stage
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      */
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=200)
      */
-    private $description;
+    private $descriptionMissions;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
     private $emailContact;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Formation::class, inversedBy="stages")
+     */
+    private $typeFormation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="stages")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $entreprise;
+
+    public function __construct()
+    {
+        $this->typeFormation = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -49,14 +67,14 @@ class Stage
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getDescriptionMissions(): ?string
     {
-        return $this->description;
+        return $this->descriptionMissions;
     }
 
-    public function setDescription(string $description): self
+    public function setDescriptionMissions(string $descriptionMissions): self
     {
-        $this->description = $description;
+        $this->descriptionMissions = $descriptionMissions;
 
         return $this;
     }
@@ -69,6 +87,42 @@ class Stage
     public function setEmailContact(string $emailContact): self
     {
         $this->emailContact = $emailContact;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getTypeFormation(): Collection
+    {
+        return $this->typeFormation;
+    }
+
+    public function addTypeFormation(Formation $typeFormation): self
+    {
+        if (!$this->typeFormation->contains($typeFormation)) {
+            $this->typeFormation[] = $typeFormation;
+        }
+
+        return $this;
+    }
+
+    public function removeTypeFormation(Formation $typeFormation): self
+    {
+        $this->typeFormation->removeElement($typeFormation);
+
+        return $this;
+    }
+
+    public function getEntreprise(): ?Entreprise
+    {
+        return $this->entreprise;
+    }
+
+    public function setEntreprise(?Entreprise $entreprise): self
+    {
+        $this->entreprise = $entreprise;
 
         return $this;
     }
