@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Stage;
+use App\Entity\Entreprise;
+use App\Entity\Formation;
 
 class ProStageController extends AbstractController
 {
@@ -13,8 +16,12 @@ class ProStageController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('pro_stage/index.html.twig', [
-            'controller_name' => 'ProStageController',
+
+        $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
+
+        $stages=$repositoryStage->findAll();
+
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages,//'controller_name' =>'Oui'
         ]);
     }
     
@@ -23,8 +30,12 @@ class ProStageController extends AbstractController
      */
     public function entreprises(): Response
     {
-        return $this->render('pro_stage/entreprises.html.twig', [
-            //'controller_name' => 'Cette page affichera la liste des entreprises proposant un stage',
+
+        $repositoryEntreprise=$this->getDoctrine()->getRepository(Entreprise::class);
+
+        $entreprises=$repositoryEntreprise->findAll();
+
+        return $this->render('pro_stage/entreprises.html.twig', ['listeEntreprises'=>$entreprises, //'controller_name' =>'Oui'
         ]);
     }
 
@@ -33,17 +44,22 @@ class ProStageController extends AbstractController
      */
     public function formations(): Response
     {
-        return $this->render('pro_stage/formations.html.twig', [
-            //'controller_name' => 'Cette page affichera la liste des formations de l\'IUT',
+        $repositoryFormation=$this->getDoctrine()->getRepository(Formation::class);
+
+        $formations=$repositoryFormation->findAll();
+
+        return $this->render('pro_stage/formations.html.twig',['listeFormations'=>$formations,//'controller_name' =>'Oui'
         ]);
     }
 	
 	/**
-     * @Route("/stage/{id}", name="pro_stage_stages")
+     * @Route("/stages/{id}", name="pro_stage_stages")
      */
     public function stages($id): Response
     {
         return $this->render('pro_stage/stages.html.twig', 
 		['id_stages' => $id]);
     }
+    
+
 }
