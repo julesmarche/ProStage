@@ -10,9 +10,14 @@
 #logo {
     text-align: center;
     width: 400px;
-    background: #D8BFD8;
-    border-radius: 20px;
+    background: #c9e2f8;
+    border-radius: 30px;
     padding: 20px;
-    margin: 90px auto;
-    box-shadow: 0 0 20px #222;
+    margin: 60px auto;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+td
+{
+    border:rgb(0, 0, 0);
 }

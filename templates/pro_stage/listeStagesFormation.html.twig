@@ -1,11 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block nomDeLaPage %}
 
-
-
- {% block nomDeLaPage %}
-
- <h1> Stages </h1>
+<h1> Formation : {{formation.nomLong}} </h1>
 
   {% endblock %}
  
@@ -21,16 +18,15 @@
 </thead>
 
 <tbody>
-  {% for stage in listeStages %}
+  {% for stage in formation.stages %}
   <tr>
-      <th scope="row"> {{ stage.id }} </th>
-      <td>{{ stage.titre }}</td>
-      <td>{{ stage.entreprise.nom }}</td>
-      <td>{{ stage.emailContact }}</td>
+      <th scope="row"> {{stage.id }} </th>
+      <td> {{ stage.titre }}</td>
+      <td> {{ stage.entreprise.nom }}</td>
+      <td> {{ stage.emailContact }}</td>
       <td><a href="{{path('pro_stage_stages',{idStage:stage.id })}}"> En savoir plus <i class="icon-left-hand-1"></i></a></td>
   </tr>
   {% endfor %}
 </tbody>
 
 {% endblock %}
-

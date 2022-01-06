@@ -1,6 +1,30 @@
 {% extends 'base.html.twig' %}
- 
- {% block contenu %}
-        
+
+ {% block nomDeLaPage %}
+
+ <h1> Stages n°{{ stage.id}} </h1>
+
   {% endblock %}
-  
+ 
+{% block tableauDeLaPage %}
+<thead>
+  <tr>
+  <th scope="col">Numéro</th>
+  <th scope="col">Intitulé</th>
+  <th scope="col">Entreprise</th>
+  <th scope="col">Contact</th>
+  <th scope="col">Description Complète</th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+      <th scope="row"> {{ stage.id }} </th>
+      <td>{{ stage.titre }}</td>
+      <td>{{ stage.entreprise.nom }}</td>
+      <td>{{ stage.emailContact }}</td>
+      <td>{{ stage.descriptionMissions }}</td>
+  </tr>
+</tbody>
+
+{% endblock %}

@@ -49,13 +49,11 @@ class ProStageController extends AbstractController
 
         $entreprise=$repositoryEntreprise->find($idEntreprise);
 
-        $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
-
-        $stages=$repositoryStage->findBy(['entreprise'=>$entreprise]);
-
-        return $this->render('pro_stage/listeStagesEntreprise.html.twig', ['listeStagesEntreprise'=>$stages, //'controller_name' =>'Oui'
-         'entreprise'=>$entreprise],);
+        return $this->render('pro_stage/listeStagesEntreprise.html.twig', ['entreprise'=>$entreprise
+        ]);
     }
+
+
 
     /**
      * @Route("/formations", name="pro_stage_formations")
@@ -66,17 +64,36 @@ class ProStageController extends AbstractController
 
         $formations=$repositoryFormation->findAll();
 
-        return $this->render('pro_stage/formations.html.twig',['listeFormations'=>$formations,//'controller_name' =>'Oui'
+        return $this->render('pro_stage/formations.html.twig',['listeFormations'=>$formations
+        ]);
+    }
+
+
+    /**
+     * @Route("/formations/stages/{idFormation}", name="pro_stage_voir_stages_formation")
+     */
+    public function stagesDansFormations($idFormation): Response
+    {
+
+        $repositoryFormation=$this->getDoctrine()->getRepository(Formation::class);
+
+        $formation=$repositoryFormation->find($idFormation);
+
+        return $this->render('pro_stage/listeStagesFormation.html.twig', ['formation'=>$formation
         ]);
     }
 	
 	/**
-     * @Route("/stages/{id}", name="pro_stage_stages")
+     * @Route("/stages/{idStage}", name="pro_stage_stages")
      */
-    public function stages($id): Response
+    public function stages($idStage): Response
     {
-        return $this->render('pro_stage/stages.html.twig', 
-		['id_stages' => $id]);
+        $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
+
+        $stage=$repositoryStage->find($idStage);
+
+        return $this->render('pro_stage/stages.html.twig', ['stage'=>$stage
+        ]);
     }
     
 
