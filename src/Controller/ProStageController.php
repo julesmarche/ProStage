@@ -54,7 +54,7 @@ class ProStageController extends AbstractController
         $stages=$repositoryStage->findBy(['entreprise'=>$entreprise]);
 
         return $this->render('pro_stage/listeStagesEntreprise.html.twig', ['listeStagesEntreprise'=>$stages, //'controller_name' =>'Oui'
-         'idEntreprise'=>$idEntreprise],);
+         'entreprise'=>$entreprise],);
     }
 
     /**
