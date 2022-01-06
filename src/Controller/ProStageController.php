@@ -39,6 +39,24 @@ class ProStageController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/entreprises/stages/{idEntreprise}", name="pro_stage_voir_stages_entreprise")
+     */
+    public function stagesDansEntreprises($idEntreprise): Response
+    {
+
+        $repositoryEntreprise=$this->getDoctrine()->getRepository(Entreprise::class);
+
+        $entreprise=$repositoryEntreprise->find($idEntreprise);
+
+        $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
+
+        $stages=$repositoryStage->findBy(['entreprise'=>$entreprise]);
+
+        return $this->render('pro_stage/listeStagesEntreprise.html.twig', ['listeStagesEntreprise'=>$stages, //'controller_name' =>'Oui'
+         'idEntreprise'=>$idEntreprise],);
+    }
+
     /**
      * @Route("/formations", name="pro_stage_formations")
      */
