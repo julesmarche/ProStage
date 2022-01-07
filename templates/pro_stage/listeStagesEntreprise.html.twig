@@ -22,7 +22,7 @@
       <th scope="row"> {{stage.id }} </th>
       <td> {{ stage.titre }}</td>
       <td> {{ stage.emailContact }}</td>
-      <td><a href="{{path('pro_stage_stages',{idStage:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
+      <td><a href="{{path('pro_stage_stages',{id:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
   </tr>
   {% endfor %}
 </tbody>
