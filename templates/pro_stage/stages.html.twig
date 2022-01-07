@@ -2,7 +2,7 @@
 
  {% block nomDeLaPage %}
 
- <h1> Stages n°{{ stage.id}} </h1>
+ <h1> Stages <u>n°{{ stage.id}}</u> </h1>
 
   {% endblock %}
  
@@ -21,7 +21,7 @@
   <tr>
       <th scope="row"> {{ stage.id }} </th>
       <td>{{ stage.titre }}</td>
-      <td>{{ stage.entreprise.nom }}</td>
+      <td><a href="{{path('pro_stage_voir_stages_entreprise',{idEntreprise:stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></td>
       <td>{{ stage.emailContact }}</td>
       <td>{{ stage.descriptionMissions }}</td>
   </tr>

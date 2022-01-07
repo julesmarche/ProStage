@@ -9,46 +9,53 @@ use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
 
+use App\Repository\StageRepository;
+use App\Repository\FormationRepository;
+use App\Repository\EntrepriseRepository;
+
 class ProStageController extends AbstractController
 {
     /**
      * @Route("/", name="pro_stage_accueil")
      */
-    public function index(): Response
+    public function index(StageRepository $repositoryStage): Response
     {
 
-        $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
 
         $stages=$repositoryStage->findAll();
 
-        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages,//'controller_name' =>'Oui'
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages,
         ]);
     }
+
+    /**
+     * @Route("/stages/{idStage}", name="pro_stage_stages")
+     */
+    public function stages(Stage $stage): Response
+    {
+        return $this->render('pro_stage/stages.html.twig', ['stage'=>$stage
+        ]);
+    }
+
+
     
      /**
      * @Route("/entreprises", name="pro_stage_entreprises")
      */
-    public function entreprises(): Response
+    public function entreprises(EntrepriseRepository $repositoryEntreprise): Response
     {
-
-        $repositoryEntreprise=$this->getDoctrine()->getRepository(Entreprise::class);
 
         $entreprises=$repositoryEntreprise->findAll();
 
-        return $this->render('pro_stage/entreprises.html.twig', ['listeEntreprises'=>$entreprises, //'controller_name' =>'Oui'
+        return $this->render('pro_stage/entreprises.html.twig', ['listeEntreprises'=>$entreprises,
         ]);
     }
 
      /**
      * @Route("/entreprises/stages/{idEntreprise}", name="pro_stage_voir_stages_entreprise")
      */
-    public function stagesDansEntreprises($idEntreprise): Response
+    public function stagesDansEntreprises(Entreprise $entreprise ): Response
     {
-
-        $repositoryEntreprise=$this->getDoctrine()->getRepository(Entreprise::class);
-
-        $entreprise=$repositoryEntreprise->find($idEntreprise);
-
         return $this->render('pro_stage/listeStagesEntreprise.html.twig', ['entreprise'=>$entreprise
         ]);
     }
@@ -58,10 +65,8 @@ class ProStageController extends AbstractController
     /**
      * @Route("/formations", name="pro_stage_formations")
      */
-    public function formations(): Response
+    public function formations(FormationRepository $repositoryFormation): Response
     {
-        $repositoryFormation=$this->getDoctrine()->getRepository(Formation::class);
-
         $formations=$repositoryFormation->findAll();
 
         return $this->render('pro_stage/formations.html.twig',['listeFormations'=>$formations
@@ -72,29 +77,14 @@ class ProStageController extends AbstractController
     /**
      * @Route("/formations/stages/{idFormation}", name="pro_stage_voir_stages_formation")
      */
-    public function stagesDansFormations($idFormation): Response
+    public function stagesDansFormations(Formation $formation): Response
     {
-
-        $repositoryFormation=$this->getDoctrine()->getRepository(Formation::class);
-
         $formation=$repositoryFormation->find($idFormation);
 
         return $this->render('pro_stage/listeStagesFormation.html.twig', ['formation'=>$formation
         ]);
     }
 	
-	/**
-     * @Route("/stages/{idStage}", name="pro_stage_stages")
-     */
-    public function stages($idStage): Response
-    {
-        $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
-
-        $stage=$repositoryStage->find($idStage);
-
-        return $this->render('pro_stage/stages.html.twig', ['stage'=>$stage
-        ]);
-    }
     
 
 }
