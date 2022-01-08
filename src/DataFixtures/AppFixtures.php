@@ -68,14 +68,21 @@ class AppFixtures extends Fixture
         {
 
             $entrepriseAssocieAuStage = $faker->numberBetween($min=0 , $max=14);
-            $formationAssocieeAuStage = $faker->numberBetween($min=0, $max=4);
+       
+            $nombreDeFormations = $faker->numberBetween($min=0, $max=2);
 
             $stage = new Stage();
             $stage->setTitre($faker->realText($maxNbChars = 50, $indexSize = 2));
             $stage->setDescriptionMissions($faker->realtext());
             $stage->setEmailContact($faker->email);
             $stage->setEntreprise($entreprises[$entrepriseAssocieAuStage]);
-            $stage->addTypeFormation($tableauFormations[$formationAssocieeAuStage]);
+            
+            for($j=0 ; $j<$nombreDeFormations ; $j++)
+            {
+                $formationAssocieeAuStage = $faker->unique()->numberBetween($min=0, $max=4);
+                $stage->addTypeFormation($tableauFormations[$formationAssocieeAuStage]);
+            }
+            $faker->unique($reset = true);
             
             $manager->persist($stage);
         }
