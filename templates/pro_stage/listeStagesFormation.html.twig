@@ -1,32 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block nomDeLaPage %}
+  <h1> Formation : <u>{{formation.nomLong}}</u> </h1>
+{% endblock %}
 
-<h1> Formation : <u>{{formation.nomLong}}</u> </h1>
-
-  {% endblock %}
- 
 {% block tableauDeLaPage %}
-<thead>
-  <tr>
-  <th scope="col">Numéro</th>
-  <th scope="col">Intitulé</th>
-  <th scope="col">Entreprise</th>
-  <th scope="col">Contact</th>
-  <th scope="col">Description Complète</th>
-  </tr>
-</thead>
+  <thead>
+    <tr>
+      <th scope="col">Numéro</th>
+      <th scope="col">Intitulé</th>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Description Complète</th>
+    </tr>
+  </thead>
 
-<tbody>
-  {% for stage in formation.stages %}
-  <tr>
-      <th scope="row"> {{stage.id }} </th>
-      <td> {{ stage.titre }}</td>
-      <td> <a href="{{path('pro_stage_voir_stages_entreprise',{id:stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></td>
-      <td> {{ stage.emailContact }}</td>
-      <td><a href="{{path('pro_stage_stages',{id:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
-  </tr>
-  {% endfor %}
-</tbody>
+  <tbody>
+    {% for stage in formation.stages %}
+      <tr>
+        <th scope="row"> {{stage.id }} </th>
+        <td> {{ stage.titre }}</td>
+        <td> <a href="{{path('pro_stage_voir_stages_entreprise',{id:stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></td>
+        <td> {{ stage.emailContact }}</td>
+        <td><a href="{{path('pro_stage_stages',{id:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
 
 {% endblock %}

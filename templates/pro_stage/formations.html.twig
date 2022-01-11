@@ -1,24 +1,25 @@
 {% extends 'base.html.twig' %}
+
 {% block nomDeLaPage %}
-<h1>Formations</h1>
+  <h1>Formations</h1>
 {% endblock %}
 
 {% block tableauDeLaPage %}
-<thead>
-  <tr>
-  <th scope="col">Nom de la formation</th>
-  <th scope="col">Stages</th>
-  </tr>
-</thead>
+  <thead>
+    <tr>
+      <th scope="col">Nom de la formation</th>
+      <th scope="col">Stages</th>
+    </tr>
+  </thead>
 
-<tbody>
-  {% for formation in listeFormations %}
-  <tr>
-      <th scope="row"> {{ formation.nomLong }} </th>
-      <td><a href="{{path('pro_stage_voir_stages_formation',{id:formation.id})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a></td>
-  </tr>
-  {% endfor %}
-</tbody>
+  <tbody>
+    {% for formation in listeFormations %}
+      <tr>
+        <th scope="row"> {{ formation.nomLong }} </th>
+        <td><a href="{{path('pro_stage_voir_stages_formation',{id:formation.id})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
 
 {% endblock %}
 

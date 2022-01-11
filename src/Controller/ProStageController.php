@@ -20,8 +20,6 @@ class ProStageController extends AbstractController
      */
     public function index(StageRepository $repositoryStage) 
     {
-
-
         $stages=$repositoryStage->findAll();
 
         return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages
@@ -33,7 +31,7 @@ class ProStageController extends AbstractController
      */
     public function stages(Stage $stage)
     {
-        return $this->render('pro_stage/stages.html.twig', ['stage' => $stage
+        return $this->render('pro_stage/descriptionStage.html.twig', ['stage' => $stage
         ]);
     }
 
@@ -44,7 +42,6 @@ class ProStageController extends AbstractController
      */
     public function entreprises(EntrepriseRepository $repositoryEntreprise)
     {
-
         $entreprises=$repositoryEntreprise->findAll();
 
         return $this->render('pro_stage/entreprises.html.twig', ['listeEntreprises' => $entreprises

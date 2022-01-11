@@ -1,31 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block nomDeLaPage %}
- <h1> Entreprises </h1>
+  <h1> Entreprises </h1>
 {% endblock %}
 
 {% block tableauDeLaPage %}
-<thead>
-  <tr>
-  <th scope="col">Nom</th>
-  <th scope="col">Activité</th>
-  <th scope="col">Adresse</th>
-  <th scope="col">SiteWeb</th>
-  <th scope="col">Stages</th>
-  </tr>
-</thead>
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Activité</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">SiteWeb</th>
+      <th scope="col">Stages</th>
+    </tr>
+  </thead>
 
-<tbody>
-  {% for entreprise in listeEntreprises %}
-  <tr>
-      <th scope="row"> {{ entreprise.nom }} </th>
-      <td>{{ entreprise.activite }}</td>
-      <td>{{ entreprise.adresse }}</td>
-      <td>{{ entreprise.URLsite }}</td>
-      <td><a href="{{path('pro_stage_voir_stages_entreprise',{id:entreprise.id})}}">Voir les stages disponibles<i class="icon-left-hand"></i></a></td>
-  </tr>
-  {% endfor %}
-</tbody>
+  <tbody>
+    {% for entreprise in listeEntreprises %}
+      <tr>
+        <th scope="row"> {{ entreprise.nom }} </th>
+        <td>{{ entreprise.activite }}</td>
+        <td>{{ entreprise.adresse }}</td>
+        <td>{{ entreprise.URLsite }}</td>
+        <td><a href="{{path('pro_stage_voir_stages_entreprise',{id:entreprise.id})}}">Voir les stages disponibles<i class="icon-left-hand"></i></a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
 
 {% endblock %}
         

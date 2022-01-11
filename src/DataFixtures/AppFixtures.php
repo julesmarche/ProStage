@@ -69,7 +69,7 @@ class AppFixtures extends Fixture
 
             $entrepriseAssocieAuStage = $faker->numberBetween($min=0 , $max=14);
        
-            $nombreDeFormations = $faker->numberBetween($min=0, $max=2);
+            $nombreDeFormations = $faker->numberBetween($min=1, $max=3);
 
             $stage = new Stage();
             $stage->setTitre($faker->realText($maxNbChars = 50, $indexSize = 2));
