@@ -1,22 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-  {% block nomDeLaPage %}
-    <h1> Stage <u>n°{{ stage.id }}</u> </h1>
-  {% endblock %}
- 
-  <h2>Intitulé</h2>
-  <p>{{ stage.titre }}</p>
-  <h2>Entreprise</h2>
-  <a href="{{path('pro_stage_voir_stages_entreprise',{id:stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a>
-  <h2>Contact</h2>
-  <p>{{ stage.emailContact }}</p>
-  <h2>Formations</h2>
 
-  <ul>
-    {% for formation in stage.typeFormation %}
-      <li>{{ formation.nomCourt }}</li>
-    {% endfor %}
-  </ul>
+  
+      <center><h1> Stage <u>n°{{ stage.id }}</u> </h1></center>
+      
+      <h2>Intitulé</h2>
+      <p>{{ stage.titre }}</p>
+    
+
+    
+      <h2>Entreprise</h2>
+        <a href="{{path('pro_stage_voir_stages_entreprise',{id:stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a>
+      <h2>Contact</h2>
+      <p>{{ stage.emailContact }}</p>
+  
+
+    
+      <h2>Formations requises</h2>
+      <ul>
+        {% for formation in stage.typeFormation %}
+          <li><a href="{{path('pro_stage_voir_stages_formation',{id:formation.id})}}">{{ formation.nomCourt }}</a></li>
+        {% endfor %}
+      </ul>
+      <h2>Description des missions</h2>
+      <p>{{ stage.descriptionMissions }}</p>
+    
 
 {% endblock %}
