@@ -56,7 +56,8 @@ class AppFixtures extends Fixture
             $entreprise->setAdresse($faker->address);
             $entreprise->setNom($faker->company);
             $entreprise->setURLsite($faker->url);
-
+            
+            //Je range les entreprises dans un tableau
             $entreprises[]=$entreprise;
             $manager->persist($entreprise);
 
@@ -66,19 +67,23 @@ class AppFixtures extends Fixture
         
         for($i=0 ; $i<30 ; $i++)
         {
-
+            //Génération d'un nombre aléatoire pour associé une entreprise à ce stage
             $entrepriseAssocieAuStage = $faker->numberBetween($min=0 , $max=14);
-       
+            
+            //Génération d'un nombre aléatoire pour avoir le nombre de formation de ce stage
             $nombreDeFormations = $faker->numberBetween($min=1, $max=3);
 
             $stage = new Stage();
             $stage->setTitre($faker->realText($maxNbChars = 50, $indexSize = 2));
             $stage->setDescriptionMissions($faker->realtext());
             $stage->setEmailContact($faker->email);
+            
+            //On associe l'entreprise qui a le numéro tiré juste avant au stage
             $stage->setEntreprise($entreprises[$entrepriseAssocieAuStage]);
             
             for($j=0 ; $j<$nombreDeFormations ; $j++)
             {
+                //On associe une formation aléatoirement
                 $formationAssocieeAuStage = $faker->unique()->numberBetween($min=0, $max=4);
                 $stage->addTypeFormation($tableauFormations[$formationAssocieeAuStage]);
             }
