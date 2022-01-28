@@ -16,7 +16,7 @@
     {% for formation in listeFormations %}
       <tr>
         <th scope="row"> {{ formation.nomLong }} </th>
-        <td><a href="{{path('pro_stage_voir_stages_formation',{id:formation.id})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a></td>
+        <td><a href="{{path('pro_stage_voir_stages_formation',{nomFormation:formation.nomCourt})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a></td>
       </tr>
     {% endfor %}
   </tbody>

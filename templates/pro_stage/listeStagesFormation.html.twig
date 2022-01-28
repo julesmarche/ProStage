@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block nomDeLaPage %}
-  <h1> Formation : <u>{{formation.nomLong}}</u> </h1>
+  <h1> Formation : <u>{{nomCourt}}</u> </h1>
 {% endblock %}
 
 {% block tableauDeLaPage %}
@@ -16,11 +16,11 @@
   </thead>
 
   <tbody>
-    {% for stage in formation.stages %}
+    {% for stage in stagesFormation %}
       <tr>
         <th scope="row"> {{stage.id }} </th>
         <td> {{ stage.titre }}</td>
-        <td> <a href="{{path('pro_stage_voir_stages_entreprise',{id:stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></td>
+        <td> <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a></td>
         <td> {{ stage.emailContact }}</td>
         <td><a href="{{path('pro_stage_stages',{id:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
       </tr>

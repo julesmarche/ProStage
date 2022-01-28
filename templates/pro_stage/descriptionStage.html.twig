@@ -11,7 +11,7 @@
 
     
       <h2>Entreprise</h2>
-        <a href="{{path('pro_stage_voir_stages_entreprise',{id:stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a>
+        <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a>
       <h2>Contact</h2>
       <p>{{ stage.emailContact }}</p>
   
@@ -20,7 +20,7 @@
       <h2>Formations requises</h2>
       <ul>
         {% for formation in stage.typeFormation %}
-          <li><a href="{{path('pro_stage_voir_stages_formation',{id:formation.id})}}">{{ formation.nomCourt }}</a></li>
+          <li><a href="{{path('pro_stage_voir_stages_formation',{nomFormation:formation.nomCourt})}}">{{ formation.nomCourt }}</a></li>
         {% endfor %}
       </ul>
       <h2>Description des missions</h2>

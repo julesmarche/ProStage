@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block nomDeLaPage %}
-  <h1> Entreprise : <u>{{entreprise.nom}}</u> </h1>
+  <h1> Entreprise : <u>{{nom}}</u> </h1>
 {% endblock %}
 
 {% block tableauDeLaPage %}
@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    {% for stage in entreprise.stages %}
+    {% for stage in stagesEntreprise %}
       <tr>
         <th scope="row"> {{stage.id }} </th>
         <td> {{ stage.titre }}</td>

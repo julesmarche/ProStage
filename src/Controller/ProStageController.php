@@ -48,14 +48,33 @@ class ProStageController extends AbstractController
         ]);
     }
 
+    /*
+        Ancienne fonction sans QueryBuilder
      /**
      * @Route("/entreprises/stages/{id}", name="pro_stage_voir_stages_entreprise")
      */
+    /*
     public function stagesDansEntreprises(Entreprise $entreprise)
     {
         return $this->render('pro_stage/listeStagesEntreprise.html.twig', ['entreprise' => $entreprise
         ]);
     }
+    */
+
+
+     /**
+     * @Route("/entreprises/stages/{nomEntreprise}", name="pro_stage_voir_stages_entreprise")
+     */
+    
+    public function stagesDansEntreprises(StageRepository $repository, $nomEntreprise)
+    {
+        $stages = $repository->findStagesParEntreprise($nomEntreprise);
+
+        return $this->render('pro_stage/listeStagesEntreprise.html.twig', ['stagesEntreprise' => $stages,'nom'=>$nomEntreprise
+        ]);
+    }
+
+    
 
 
 
@@ -71,12 +90,28 @@ class ProStageController extends AbstractController
     }
 
 
+    /*
     /**
      * @Route("/formations/stages/{id}", name="pro_stage_voir_stages_formation")
      */
+    /*
     public function stagesDansFormations(Formation $formation)
     {
         return $this->render('pro_stage/listeStagesFormation.html.twig', ['formation'=>$formation
+        ]);
+    }
+    */
+
+
+    /**
+     * @Route("/formations/stages/{nomFormation}", name="pro_stage_voir_stages_formation")
+     */
+
+    public function stagesDansFormations(StageRepository $repository , $nomFormation)
+    {
+        $stages = $repository->findStagesParFormation($nomFormation);
+
+        return $this->render('pro_stage/listeStagesFormation.html.twig', ['stagesFormation'=>$stages,'nomCourt'=>$nomFormation
         ]);
     }
 	

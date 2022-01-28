@@ -18,7 +18,7 @@
     {% for stage in listeStages %}
       <tr>
           <th scope="row"> {{ stage.titre }} </th>
-          <td><a href="{{path('pro_stage_voir_stages_entreprise',{id:stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></td>
+          <td><a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a></td>
           <td>{{ stage.emailContact }}</td>
           <td><a href="{{path('pro_stage_stages',{id:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
       </tr>
