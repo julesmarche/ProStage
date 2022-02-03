@@ -18,9 +18,21 @@ class ProStageController extends AbstractController
     /**
      * @Route("/", name="pro_stage_accueil")
      */
+    /*
     public function index(StageRepository $repositoryStage) 
     {
         $stages=$repositoryStage->findAll();
+
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages
+        ]);
+    }*/
+
+    /**
+     * @Route("/", name="pro_stage_accueil")
+     */
+    public function index(StageRepository $repositoryStage) 
+    {
+        $stages=$repositoryStage->recupererToutLesStages();
 
         return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages
         ]);
@@ -29,14 +41,27 @@ class ProStageController extends AbstractController
     /**
      * @Route("/stages/{id}", name="pro_stage_stages")
      */
+    /*
     public function stages(Stage $stage)
     {
         return $this->render('pro_stage/descriptionStage.html.twig', ['stage' => $stage
         ]);
     }
+    */
 
-
+    /**
+     * @Route("/stages/{idStage}", name="pro_stage_stages")
+     */
     
+    public function stages(StageRepository $repositoryStage , $idStage)
+    {
+        $stage = $repositoryStage->recupererInformationsStage($idStage);
+
+        return $this->render('pro_stage/descriptionStage.html.twig', ['stage' => $stage,'idStage' => $idStage
+        ]);
+    }
+
+ 
      /**
      * @Route("/entreprises", name="pro_stage_entreprises")
      */
