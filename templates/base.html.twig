@@ -29,7 +29,7 @@
         <div class="container-fluid">
 
             {% block titre %}
-                <div class="row" >
+                <div class="base" >
                     <div class="col-12" id="logo">
                         <a href="{{path('pro_stage_accueil')}}">
                             <img src={{asset('/logo_large.png')}} alt="logo_ProStages"/>
@@ -39,19 +39,22 @@
             {% endblock %}
 
             {% block menu %}
-                <div class="row">
-                    <div class="col-md-6 col-xs-12 ">
+                <div class="base">
+                    <div class="col-md-4 col-xs-12 ">
                         <a href="{{path('pro_stage_formations')}}" class="link-info"> Trier par Formation </a>
                     </div>
-                    <div class="col-md-6 col-xs-12">
+                    <div class="col-md-4 col-xs-12">
                         <a href="{{path('pro_stage_entreprises')}}" class="link-info"> Trier par Entreprise</a>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <a href="{{path('pro_stage_ajoutEntreprisesEnBd')}}" class="link-info"> Ajouter des entreprises</a>
                     </div>
                 </div>        
             {% endblock %}
                          
             
             {% block contenu %}
-                <div class="row">
+                <div class="base">
                     <div class="col-md-12">
                         <h3 class="text-center">
                             {% block  nomDeLaPage %} 
@@ -66,7 +69,7 @@
 
 
             {% block footer %}
-                <div class="row" style="color:black">
+                <div class="base" style="color:black">
              
                     <div class="col-md-2 col-xs-12">
                         <p> <i class="icon-copyright"></i> Marche Jules </p>

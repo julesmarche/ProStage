@@ -3,8 +3,16 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request ;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
@@ -36,6 +44,38 @@ class ProStageController extends AbstractController
 
         return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages
         ]);
+    }
+
+
+    /**
+     * @Route("/ajoutEntreprisesEnBd", name="pro_stage_ajoutEntreprisesEnBd")
+     */
+    public function ajoutEntreprisesEnBd(Request $requeteHttp, EntityManagerInterface $manager) 
+    {
+        $entreprise = new Entreprise();
+
+        $formulaireEntreprise = $this   -> createFormBuilder($entreprise)
+                                        ->add('nom',TextType::class,[ 'label'=>'Nom'])
+                                        ->add('adresse')
+                                        ->add('activite')
+                                        ->add('URLsite',UrlType::class,[ 'label'=>'Url du site'])
+                                        ->getForm();
+
+        $formulaireEntreprise -> handleRequest ( $requeteHttp );
+
+
+        if($formulaireEntreprise->isSubmitted())
+        {
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            return $this->redirectToRoute('pro_stage_accueil');
+        }
+
+
+
+        return $this->render('pro_stage/ajoutEntreprisesEnBd.html.twig',['formulaireAjoutEntreprise' => $formulaireEntreprise -> createView ()]
+        );
     }
 
     /**
