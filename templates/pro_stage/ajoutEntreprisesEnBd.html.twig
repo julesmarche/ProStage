@@ -2,7 +2,7 @@
 
 {% block contenu %}
 
-{{ form_start(formulaireAjoutEntreprise) }}
+ {{ form_start(formulaireAjoutEntreprise,{ 'attr':{ 'novalidate': 'novalidate' }}) }}
 
 
 <div class="container-fluid">
@@ -16,40 +16,24 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-1">
                     {{ form_label( formulaireAjoutEntreprise.nom) }}
-				</div>
-				<div class="col-md-11">
                     {{ form_errors( formulaireAjoutEntreprise.nom) }}
                     {{ form_widget( formulaireAjoutEntreprise.nom) }}
-				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-1">
                     {{ form_label( formulaireAjoutEntreprise.adresse) }}
-				</div>
-				<div class="col-md-11">
                     {{ form_errors( formulaireAjoutEntreprise.adresse) }}
                     {{ form_widget( formulaireAjoutEntreprise.adresse) }}
-				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-1">
                     {{ form_label( formulaireAjoutEntreprise.activite) }}
-				</div>
-				<div class="col-md-11">
                     {{ form_errors( formulaireAjoutEntreprise.activite) }}
                     {{ form_widget( formulaireAjoutEntreprise.activite) }}
-				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-1">
                     {{ form_label( formulaireAjoutEntreprise.URLsite) }}
-				</div>
-				<div class="col-md-11">
                     {{ form_errors( formulaireAjoutEntreprise.URLsite) }}
                     {{ form_widget( formulaireAjoutEntreprise.URLsite) }}
-				</div>
 			</div>
 		</div>
 	</div>
