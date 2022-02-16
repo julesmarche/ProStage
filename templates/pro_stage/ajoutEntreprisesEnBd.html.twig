@@ -2,38 +2,42 @@
 
 {% block contenu %}
 
- {{ form_start(formulaireAjoutEntreprise,{ 'attr':{ 'novalidate': 'novalidate' }}) }}
+ {{ form_start(formulaireAjoutModifEntreprise,{ 'attr':{ 'novalidate': 'novalidate' }}) }}
 
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="text-center">
-				Formulaire de saisie d'une entreprise
+				{% if choix=='creation'%}
+					Formulaire de saisie d'une entreprise
+				{% else %}
+					Formulaire de modification d'une entreprise
+				{% endif %} 
 			</h3>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
-                    {{ form_label( formulaireAjoutEntreprise.nom) }}
-                    {{ form_errors( formulaireAjoutEntreprise.nom) }}
-                    {{ form_widget( formulaireAjoutEntreprise.nom) }}
+                    {{ form_label( formulaireAjoutModifEntreprise.nom) }}
+                    {{ form_errors( formulaireAjoutModifEntreprise.nom) }}
+                    {{ form_widget( formulaireAjoutModifEntreprise.nom) }}
 			</div>
 			<div class="row">
-                    {{ form_label( formulaireAjoutEntreprise.adresse) }}
-                    {{ form_errors( formulaireAjoutEntreprise.adresse) }}
-                    {{ form_widget( formulaireAjoutEntreprise.adresse) }}
+                    {{ form_label( formulaireAjoutModifEntreprise.adresse) }}
+                    {{ form_errors( formulaireAjoutModifEntreprise.adresse) }}
+                    {{ form_widget( formulaireAjoutModifEntreprise.adresse) }}
 			</div>
 			<div class="row">
-                    {{ form_label( formulaireAjoutEntreprise.activite) }}
-                    {{ form_errors( formulaireAjoutEntreprise.activite) }}
-                    {{ form_widget( formulaireAjoutEntreprise.activite) }}
+                    {{ form_label( formulaireAjoutModifEntreprise.activite) }}
+                    {{ form_errors( formulaireAjoutModifEntreprise.activite) }}
+                    {{ form_widget( formulaireAjoutModifEntreprise.activite) }}
 			</div>
 			<div class="row">
-                    {{ form_label( formulaireAjoutEntreprise.URLsite) }}
-                    {{ form_errors( formulaireAjoutEntreprise.URLsite) }}
-                    {{ form_widget( formulaireAjoutEntreprise.URLsite) }}
+                    {{ form_label( formulaireAjoutModifEntreprise.URLsite) }}
+                    {{ form_errors( formulaireAjoutModifEntreprise.URLsite) }}
+                    {{ form_widget( formulaireAjoutModifEntreprise.URLsite) }}
 			</div>
 		</div>
 	</div>
@@ -44,6 +48,6 @@
 	</div>
 </div>
 
-{{ form_end(formulaireAjoutEntreprise) }}
+{{ form_end(formulaireAjoutModifEntreprise) }}
 
 {% endblock %}

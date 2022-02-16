@@ -28,6 +28,9 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=150)
+     * @Assert\Regex(pattern = "#^[1-9][0-9]{0,2}( ?bis)? #", message = "Le numéro de rue semble incorrect")
+     * @Assert\Regex(pattern = "#boulevard|rue|impasse|allée|place|route|voie#", message = "Le type de route/voie semble incorrect")
+     * @Assert\Regex(pattern = "# [0-9]{5} #", message = "Il semble y avoir un problème avec le code postal.")
      */
     private $adresse;
 
@@ -35,9 +38,6 @@ class Entreprise
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="Cette valeur ne doit pas être vide")
      * @Assert\Length(min=4 , minMessage="Le nom de l'entreprise doit être composé d'au moins {{ limit }} caractères")
-     * @Assert\Regex(pattern='^[1-999] ?(bis)?#', message='Le numéro de rue semble incorrect')
-     * @Assert\Regex(pattern='# rue|boulevard|[a-A]venue|impasse|allée|place|voie #i', message='Le type de rue/voie semble incorrect')
-     * @Assert\Regex(pattern='#[0-9][0-9][0-9][0-9][1-9]#', message='Le type de rue/voie semble incorrect')
      */
     private $nom;
 

@@ -12,6 +12,7 @@
       <th scope="col">Adresse</th>
       <th scope="col">SiteWeb</th>
       <th scope="col">Stages</th>
+      <th scope="col">Modifier</th>
     </tr>
   </thead>
 
@@ -28,6 +29,7 @@
         #}
 
         <td><a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:entreprise.nom})}}">Voir les stages disponibles<i class="icon-left-hand"></i></a></td>
+        <td><a href="{{path('pro_stage_modificationEntreprisesEnBd',{idEntreprise:entreprise.id})}}">Modifier les informations<i class="icon-left-hand"></i></a></td>
       </tr>
     {% endfor %}
   </tbody>

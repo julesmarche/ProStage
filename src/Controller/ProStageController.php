@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request ;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,6 +20,8 @@ use App\Entity\Formation;
 use App\Repository\StageRepository;
 use App\Repository\FormationRepository;
 use App\Repository\EntrepriseRepository;
+
+
 
 class ProStageController extends AbstractController
 {
@@ -57,7 +59,7 @@ class ProStageController extends AbstractController
         $formulaireEntreprise = $this   -> createFormBuilder($entreprise)
                                         ->add('nom',TextType::class,[ 'label'=>'Nom'])
                                         ->add('adresse')
-                                        ->add('activite')
+                                        ->add('activite',Textarea::class)
                                         ->add('URLsite',UrlType::class,[ 'label'=>'Url du site'])
                                         ->getForm();
 
@@ -74,8 +76,38 @@ class ProStageController extends AbstractController
 
 
 
-        return $this->render('pro_stage/ajoutEntreprisesEnBd.html.twig',['formulaireAjoutEntreprise' => $formulaireEntreprise -> createView ()]
+        return $this->render('pro_stage/ajoutEntreprisesEnBd.html.twig',['formulaireAjoutModifEntreprise' => $formulaireEntreprise -> createView (),
+        'choix'=>'creation']
         );
+    }
+
+    /**
+     * @Route("/modificationEntreprise/{idEntreprise}", name="pro_stage_modificationEntreprisesEnBd")
+     */
+    public function modificationEntreprisesEnBd(Request $requeteHTTP, EntityManagerInterface $manager, Entreprise $entreprise): Response
+    {
+        $formulaireEntreprise = $this   -> createFormBuilder($entreprise)
+                                        ->add('nom',TextType::class,[ 'label'=>'Nom'])
+                                        ->add('adresse')
+                                        ->add('activite',Textarea::class)
+                                        ->add('URLsite',UrlType::class,[ 'label'=>'Url du site'])
+                                        ->getForm();
+
+
+        $formulaireEntreprise->handleRequest($requeteHTTP);
+
+      
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
+        {
+        $manager->persist($entreprise);
+        $manager->flush();
+
+        return $this->redirectToRoute('pro_stage_accueil');
+        }
+
+        return $this->render('pro_stage/ajoutEntreprisesEnBd.html.twig', 
+        ['formulaireAjoutModifEntreprise' => $formulaireEntreprise->createView (),
+        'choix' => 'modifier']);
     }
 
     /**
