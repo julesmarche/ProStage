@@ -21,6 +21,10 @@ use App\Repository\StageRepository;
 use App\Repository\FormationRepository;
 use App\Repository\EntrepriseRepository;
 
+use App\Form\EntrepriseType;
+use App\Form\StageType;
+
+
 
 
 class ProStageController extends AbstractController
@@ -48,6 +52,33 @@ class ProStageController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/ajoutStagesEnBd", name="pro_stage_ajoutStagesEnBd")
+     */
+    public function ajoutStagesEnBd(Request $requeteHttp, EntityManagerInterface $manager) 
+    {
+        $stage = new Stage();
+
+        $formulaireStage = $this->createForm(StageType::class,$stage);
+
+        $formulaireStage -> handleRequest ( $requeteHttp );
+
+
+        if($formulaireStage->isSubmitted()&&$formulaireStage->isValid())
+        {
+            $manager->persist($stage);
+            $manager->persist($stage->getEntreprise());
+            $manager->flush();
+
+            return $this->redirectToRoute('pro_stage_accueil');
+        }
+
+
+
+        return $this->render('pro_stage/ajoutStagesEnBd.html.twig',['formulaireAjoutStage' => $formulaireStage -> createView ()]
+        );
+    }
+
 
     /**
      * @Route("/ajoutEntreprisesEnBd", name="pro_stage_ajoutEntreprisesEnBd")
@@ -56,12 +87,7 @@ class ProStageController extends AbstractController
     {
         $entreprise = new Entreprise();
 
-        $formulaireEntreprise = $this   -> createFormBuilder($entreprise)
-                                        ->add('nom',TextType::class,[ 'label'=>'Nom'])
-                                        ->add('adresse')
-                                        ->add('activite',Textarea::class)
-                                        ->add('URLsite',UrlType::class,[ 'label'=>'Url du site'])
-                                        ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class,$entreprise);
 
         $formulaireEntreprise -> handleRequest ( $requeteHttp );
 
@@ -82,16 +108,11 @@ class ProStageController extends AbstractController
     }
 
     /**
-     * @Route("/modificationEntreprise/{idEntreprise}", name="pro_stage_modificationEntreprisesEnBd")
+     * @Route("/modificationEntreprise/{id}", name="pro_stage_modificationEntreprisesEnBd")
      */
     public function modificationEntreprisesEnBd(Request $requeteHTTP, EntityManagerInterface $manager, Entreprise $entreprise): Response
     {
-        $formulaireEntreprise = $this   -> createFormBuilder($entreprise)
-                                        ->add('nom',TextType::class,[ 'label'=>'Nom'])
-                                        ->add('adresse')
-                                        ->add('activite',Textarea::class)
-                                        ->add('URLsite',UrlType::class,[ 'label'=>'Url du site'])
-                                        ->getForm();
+        $formulaireEntreprise =$this->createForm(EntrepriseType::class,$entreprise);
 
 
         $formulaireEntreprise->handleRequest($requeteHTTP);
