@@ -5,21 +5,16 @@
 {% endblock %}
 
 {% block tableauDeLaPage %}
-  <thead>
-    <tr>
-      <th scope="col">Nom de la formation</th>
-      <th scope="col">Stages</th>
-    </tr>
-  </thead>
-
-  <tbody>
+  
     {% for formation in listeFormations %}
-      <tr>
-        <th scope="row"> {{ formation.nomLong }} </th>
-        <td><a href="{{path('pro_stage_voir_stages_formation',{nomFormation:formation.nomCourt})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a></td>
-      </tr>
+      <div class="card">
+        <div class="container">
+          {{ formation.nomLong }}
+          <a href="{{path('pro_stage_voir_stages_formation',{nomFormation:formation.nomCourt})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a>
+        </div>
+      </div>
     {% endfor %}
-  </tbody>
+
 
 {% endblock %}
 

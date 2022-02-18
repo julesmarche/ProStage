@@ -5,34 +5,21 @@
 {% endblock %}
 
 {% block tableauDeLaPage %}
-  <thead>
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Activité</th>
-      <th scope="col">Adresse</th>
-      <th scope="col">SiteWeb</th>
-      <th scope="col">Stages</th>
-      <th scope="col">Modifier</th>
-    </tr>
-  </thead>
-
-  <tbody>
+  
     {% for entreprise in listeEntreprises %}
-      <tr>
-        <th scope="row"> {{ entreprise.nom }} </th>
-        <td>{{ entreprise.activite }}</td>
-        <td>{{ entreprise.adresse }}</td>
-        <td>{{ entreprise.URLsite }}</td>
-
-        {#  Ancienne fonction sans QueryBuilder
-        <td><a href="{{path('pro_stage_voir_stages_entreprise',{id:entreprise.id})}}">Voir les stages disponibles<i class="icon-left-hand"></i></a></td>
-        #}
-
-        <td><a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:entreprise.nom})}}">Voir les stages disponibles<i class="icon-left-hand"></i></a></td>
-        <td><a href="{{path('pro_stage_modificationEntreprisesEnBd',{id:entreprise.id})}}">Modifier les informations<i class="icon-left-hand"></i></a></td>
-      </tr>
+    <div class="card">
+        <div class="container">
+          {{ entreprise.nom }}
+          {{ entreprise.activite }}
+          {{ entreprise.adresse }}
+          {{ entreprise.URLsite }}
+          <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:entreprise.nom})}}">Voir les stages disponibles<i class="icon-left-hand"></i></a>
+          <a href="{{path('pro_stage_modificationEntreprisesEnBd',{id:entreprise.id})}}">Modifier les informations<i class="icon-left-hand"></i></a>
+        </div>
+      </div>
+      
     {% endfor %}
-  </tbody>
+  
 
 {% endblock %}
         
