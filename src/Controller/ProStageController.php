@@ -81,7 +81,7 @@ class ProStageController extends AbstractController
 
 
     /**
-     * @Route("/ajoutEntreprisesEnBd", name="pro_stage_ajoutEntreprisesEnBd")
+     * @Route("/admin/ajoutEntreprisesEnBd", name="pro_stage_ajoutEntreprisesEnBd")
      */
     public function ajoutEntreprisesEnBd(Request $requeteHttp, EntityManagerInterface $manager) 
     {
