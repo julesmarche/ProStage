@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block nomDeLaPage %}
+    <h1>Liste des formations</h1>
+{% endblock %}
+
+{% block tableauDeLaPage %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomLong</th>
+                <th>NomCourt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.id }}</td>
+                <td>{{ formation.nomLong }}</td>
+                <td>{{ formation.nomCourt }}</td>
+                <td>
+                    <a href="{{ path('formation_show', {'id': formation.id}) }}">Consulter</a>
+                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('formation_new') }}">Créer une nouvelle formation</a>
+{% endblock %}
