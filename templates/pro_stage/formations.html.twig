@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block nomDeLaPage %}
-  <h1>Formations</h1>
-{% endblock %}
 
-{% block tableauDeLaPage %}
-  
-    {% for formation in listeFormations %}
-      <div class="card">
-        <div class="container">
-          {{ formation.nomLong }}
-          <a href="{{path('pro_stage_voir_stages_formation',{nomFormation:formation.nomCourt})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a>
-        </div>
+
+{% block contenu %}
+    <div class="container-fluid">
+        {% set debutNouvelleLigne = true %}
+
+        {% for formation in listeFormations %}
+            {# Si  on est en début de ligne, on crée un nouveau composant row#}
+            {% if debutNouvelleLigne == true %}
+                <div class="row">
+                {% set debutNouvelleLigne = false %}
+            {% endif %}
+            <div class=" col-md-4">
+              <center>
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header">{{ formation.nomCourt }}</div>
+                  <div class="card-body">
+                      <h4 class="card-title">{{ formation.nomLong }}</h4>
+                      <p class="card-text"><a class="btn btn-link" href="{{path('pro_stage_voir_stages_formation',{nomFormation:formation.nomCourt})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a>
+                  </div>
+                </div>
+              </center>
+            </div>
+
+            {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affichées) #}
+            {% if loop.index % 3 == 0 %}
+              </div>
+              <br />
+              {% set debutNouvelleLigne = true %}
+            {% endif %}
+            {% else %}
+              <h1>
+              <center>Aucune formation disponible.</center>
+              </h1>
+          {% endfor %}
       </div>
-    {% endfor %}
-
-
 {% endblock %}
-
