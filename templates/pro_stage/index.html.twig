@@ -1,22 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block nomDeLaPage %}
-  <h1> Stages </h1>
-{% endblock %}
+            
+{% block contenu %}
+  <style>
+  td {
+  border-color: #158cba;
+  }
+  th {
+  border-color: #158cba;
+  }
+  </style>
+  
+  <table class="table table-hover">
+  <thead>
+      <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Email de contact</th>
+      <th scope="col">Plus d'informations</th>
+      </tr>
+  </thead>
 
-{% block tableauDeLaPage %}
- 
+  <tbody>
     {% for stage in listeStages %}
-      <div class="card">
-        <div class="container">
-         {{ stage.titre }} 
-          <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a>
-         {{ stage.emailContact }}
-          <a href="{{path('pro_stage_stages',{idStage:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a>
-          </div>
-          </div>
-      
+        <tr>
+          <th scope="row"> {{ stage.titre }} </th>
+          <td> <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a></td>
+          <td>{{ stage.emailContact }}</td>
+          <td><a href="{{path('pro_stage_stages',{idStage:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
+        </tr>
     {% endfor %}
-
+  </tbody>
 {% endblock %}
+
 

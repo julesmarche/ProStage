@@ -1,13 +1,8 @@
 {% extends 'base.html.twig' %}
 
 
-
-{% block nomDeLaPage %}
-    <h1>Liste des formations</h1>
-{% endblock %}
-
-{% block tableauDeLaPage %}
-    <table class="table">
+{% block contenu %}
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,8 +18,8 @@
                 <td>{{ formation.nomLong }}</td>
                 <td>{{ formation.nomCourt }}</td>
                 <td>
-                    <a href="{{ path('formation_show', {'id': formation.id}) }}">Consulter</a>
-                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+                    <a class="btn btn-outline-primary" href="{{ path('formation_show', {'id': formation.id}) }}">Consulter</a>
+                    <a class="btn btn-outline-primary" href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +30,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('formation_new') }}">Créer une nouvelle formation</a>
+    <a class="btn btn-outline-primary" href="{{ path('formation_new') }}">Créer une nouvelle formation</a>
+    <br>
 {% endblock %}

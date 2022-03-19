@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/formation")
+ * @Route("/admin/formationCrud")
  */
 class FormationController extends AbstractController
 {

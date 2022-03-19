@@ -133,6 +133,7 @@ class ComposerStaticInit14b0fa225342b4cfe9790a3d17122965
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
+            'EasyCorp\\Bundle\\EasyAdminBundle\\' => 32,
         ),
         'D' => 
         array (
@@ -497,6 +498,10 @@ class ComposerStaticInit14b0fa225342b4cfe9790a3d17122965
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
+        'EasyCorp\\Bundle\\EasyAdminBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easycorp/easyadmin-bundle/src',
+        ),
         'Doctrine\\SqlFormatter\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/sql-formatter/src',
@@ -578,6 +583,16 @@ class ComposerStaticInit14b0fa225342b4cfe9790a3d17122965
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Pagerfanta\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/pagerfanta/pagerfanta/src',
+            ),
         ),
     );
 
@@ -1226,6 +1241,7 @@ class ComposerStaticInit14b0fa225342b4cfe9790a3d17122965
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit14b0fa225342b4cfe9790a3d17122965::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit14b0fa225342b4cfe9790a3d17122965::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit14b0fa225342b4cfe9790a3d17122965::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit14b0fa225342b4cfe9790a3d17122965::$classMap;
 
         }, null, ClassLoader::class);

@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'e937ec429cdf0d19e01866e46ec9fcdfa3d78fb9',
+        'reference' => '1e34c3a555d751e61ff174ab462a7110d266cecb',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'e937ec429cdf0d19e01866e46ec9fcdfa3d78fb9',
+            'reference' => '1e34c3a555d751e61ff174ab462a7110d266cecb',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -190,6 +190,15 @@
             'reference' => '20c39c2de286a9d3262cc8ed282a4ae60e265894',
             'dev_requirement' => false,
         ),
+        'easycorp/easyadmin-bundle' => array(
+            'pretty_version' => 'v2.3.15',
+            'version' => '2.3.15.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../easycorp/easyadmin-bundle',
+            'aliases' => array(),
+            'reference' => '5f2653e98104fcb9d7c1c00df8812786aac9f5db',
+            'dev_requirement' => false,
+        ),
         'egulias/email-validator' => array(
             'pretty_version' => '3.1.2',
             'version' => '3.1.2.0',
@@ -267,6 +276,15 @@
             'replaced' => array(
                 0 => '^2.1',
             ),
+        ),
+        'pagerfanta/pagerfanta' => array(
+            'pretty_version' => 'v2.0.1',
+            'version' => '2.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../pagerfanta/pagerfanta',
+            'aliases' => array(),
+            'reference' => '15770d9d7f6e8e07af568aed104a51f869591e73',
+            'dev_requirement' => false,
         ),
         'paragonie/random_compat' => array(
             'dev_requirement' => false,
