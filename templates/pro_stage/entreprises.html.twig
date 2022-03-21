@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
         
 {% block contenu %}
-    <div class="container-fluid">
-        {% set debutNouvelleLigne = true %}
-
-        {% for entreprise in listeEntreprises %}
-            {# Si  on est en début de ligne, on crée un nouveau composant row#}
-            {% if debutNouvelleLigne == true %}
-                <div class="row">
-                {% set debutNouvelleLigne = false %}
-            {% endif %}
+ <div class="col-md-12">
+			<h2 class="text-center">
+					Liste des entreprises
+			</h2>
+  </div>
+  <div class="container-fluid">
+    {% set debutNouvelleLigne = true %}
+      {% for entreprise in listeEntreprises %}
+        {# Si  on est en début de ligne, on crée un nouveau composant row#}
+        {% if debutNouvelleLigne == true %}
+          <div class="row">
+              {% set debutNouvelleLigne = false %}
+        {% endif %}
             <div class=" col-md-4">
               <center>
                 <div class="card border-primary mb-3" style="max-width: 20rem;">
@@ -17,15 +21,13 @@
                   <div class="card-body">
                       <h4 class="card-title">{{ entreprise.nom }}</h4>
                       <p class="card-text">
-                      <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:entreprise.nom})}}">Voir les stages disponibles<i class="icon-left-hand"></i></a>
-                      <br>
-                      <a href="{{path('pro_stage_modificationEntreprisesEnBd',{id:entreprise.id})}}">Modifier les informations<i class="icon-left-hand"></i></a>
+                      <p class="card-text"><a class="btn btn-link" href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:entreprise.nom})}}"> Voir les stages disponibles <i class="icon-left-hand"></i></a></p>
+                      <a class="card-text" href="{{path('pro_stage_modificationEntreprisesEnBd',{id:entreprise.id})}}">Modifier les informations<i class="icon-left-hand"></i></a>
                       </p>
                   </div>
                 </div>
               </center>
             </div>
-
             {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affichées) #}
             {% if loop.index % 3 == 0 %}
               </div>

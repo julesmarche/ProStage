@@ -1,54 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
+	{{ form_start(formulaireAjoutModifEntreprise,{ 'attr':{ 'novalidate': 'novalidate' }}) }}
 
- {{ form_start(formulaireAjoutModifEntreprise,{ 'attr':{ 'novalidate': 'novalidate' }}) }}
 
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<h3 class="text-center">
-				{% if choix=='creation'%}
-					Formulaire de saisie d'une entreprise
-				{% else %}
-					Formulaire de modification d'une entreprise
-				{% endif %} 
-			</h3>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="text-center">
+					{% if choix=='creation'%}
+						Formulaire de saisie d'une entreprise
+					{% else %}
+						Formulaire de modification d'une entreprise
+					{% endif %} 
+				</h3>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="row">
-                    {{ form_label( formulaireAjoutModifEntreprise.nom) }}
-                    {{ form_errors( formulaireAjoutModifEntreprise.nom) }}
-                    {{ form_widget( formulaireAjoutModifEntreprise.nom) }}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+						{{ form_row( formulaireAjoutModifEntreprise.nom) }}
+				</div>
+				<div class="row">
+						{{ form_row( formulaireAjoutModifEntreprise.adresse) }}
+				</div>
+				<div class="row">
+						{{ form_row( formulaireAjoutModifEntreprise.activite) }}
+				</div>
+				<div class="row">
+						{{ form_row( formulaireAjoutModifEntreprise.URLsite) }}
+				</div>
 			</div>
-			<div class="row">
-                    {{ form_label( formulaireAjoutModifEntreprise.adresse) }}
-                    {{ form_errors( formulaireAjoutModifEntreprise.adresse) }}
-                    {{ form_widget( formulaireAjoutModifEntreprise.adresse) }}
-			</div>
-			<div class="row">
-                    {{ form_label( formulaireAjoutModifEntreprise.activite) }}
-                    {{ form_errors( formulaireAjoutModifEntreprise.activite) }}
-                    {{ form_widget( formulaireAjoutModifEntreprise.activite) }}
-			</div>
-			<div class="row">
-                    {{ form_label( formulaireAjoutModifEntreprise.URLsite) }}
-                    {{ form_errors( formulaireAjoutModifEntreprise.URLsite) }}
-                    {{ form_widget( formulaireAjoutModifEntreprise.URLsite) }}
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-12">
+				<button type="submit" class="btn btn-outline-primary">Enregistrer</button>
 			</div>
 		</div>
 	</div>
 	<br>
-	<div class="row">
-		<div class="col-md-12">
-            <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
-		</div>
-	</div>
-</div>
-<br>
-{{ form_end(formulaireAjoutModifEntreprise) }}
-
+	{{ form_end(formulaireAjoutModifEntreprise) }}
 {% endblock %}

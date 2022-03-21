@@ -10,27 +10,33 @@
   border-color: #158cba;
   }
   </style>
-  
-  <table class="table table-hover">
-  <thead>
-      <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Entreprise</th>
-      <th scope="col">Email de contact</th>
-      <th scope="col">Plus d'informations</th>
-      </tr>
-  </thead>
 
-  <tbody>
-    {% for stage in listeStages %}
+  <div class="col-md-12">
+    <h2 class="text-center">
+      Liste des stages
+    </h2>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Entreprise</th>
+        <th scope="col">Email de contact</th>
+        <th scope="col">Plus d'informations</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for stage in listeStages %}
         <tr>
           <th scope="row"> {{ stage.titre }} </th>
           <td> <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a></td>
           <td>{{ stage.emailContact }}</td>
           <td><a href="{{path('pro_stage_stages',{idStage:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
         </tr>
-    {% endfor %}
-  </tbody>
+      {% endfor %}
+    </tbody>
 {% endblock %}
 
 

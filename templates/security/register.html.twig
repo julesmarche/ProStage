@@ -16,30 +16,25 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
-                    {{ form_label( formulaireInscription.prenom) }}
-                    {{ form_errors( formulaireInscription.prenom) }}
-                    {{ form_widget( formulaireInscription.prenom) }}
+                    {{ form_row( formulaireInscription.prenom) }}
+                    
 			</div>
 			<div class="row">
-                    {{ form_label( formulaireInscription.nom) }}
-                    {{ form_errors( formulaireInscription.nom) }}
-                    {{ form_widget( formulaireInscription.nom) }}
+                    {{ form_row( formulaireInscription.nom) }}
 			</div>
 			<div class="row">
-                    {{ form_label( formulaireInscription.email) }}
-                    {{ form_errors( formulaireInscription.email) }}
-                    {{ form_widget( formulaireInscription.email) }}
+                    {{ form_row( formulaireInscription.email) }}
 			</div>
 			<div class="row">
-                    {{ form_label( formulaireInscription.password) }}
-                    {{ form_errors( formulaireInscription.password) }}
-                    {{ form_widget( formulaireInscription.password) }}
+                    {{ form_row( formulaireInscription.password) }}
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-            <button type="submit" class="btn btn-dark">Inscription !</button>
+            <button class="btn btn-outline-primary" type="submit" >
+				Inscription !
+			</button>
 		</div>
 	</div>
 </div>

@@ -9,9 +9,9 @@
   border-color: #158cba;
   }
   </style>
-  
+
   <table class="table table-hover">
-  <thead>
+    <thead>
       <tr>
         <th scope="col">Numéro</th>
         <th scope="col">Intitulé</th>
@@ -21,17 +21,17 @@
       </tr>
     </thead>
 
-  <tbody>
-    {% for stage in stagesFormation %}
-      <tr>
-        <th scope="row"> {{stage.id }} </th>
-        <td> {{ stage.titre }}</td>
-        <td> <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a></td>
-        <td> {{ stage.emailContact }}</td>
-        <td><a href="{{path('pro_stage_stages',{idStage:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
-      </tr>
-    {% endfor %}
-  </tbody>
+    <tbody>
+      {% for stage in stagesFormation %}
+        <tr>
+          <th scope="row"> {{stage.id }} </th>
+          <td> {{ stage.titre }}</td>
+          <td> <a href="{{path('pro_stage_voir_stages_entreprise',{nomEntreprise:stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a></td>
+          <td> {{ stage.emailContact }}</td>
+          <td><a href="{{path('pro_stage_stages',{idStage:stage.id })}}"> En savoir plus <i class="icon-left-hand"></i></a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
 {% endblock %}
 
 

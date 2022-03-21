@@ -22,6 +22,14 @@ class AppFixtures extends Fixture
         $jules->setPassword("$2y$10$5VI4N9E9Ww5Oj26fNJ7amuwKu0RCptyD7GY3P8zC18voNbOL5iWHK");
         $manager->persist($jules);
 
+        $kevin=new User();
+        $kevin->setPrenom("Kevin");
+        $kevin->setNom("Garel");
+        $kevin->setEmail("kgarel@gmail.com");
+        $kevin->setRoles(['ROLE_USER']);
+        $kevin->setPassword("$2y$10$5VI4N9E9Ww5Oj26fNJ7amuwKu0RCptyD7GY3P8zC18voNbOL5iWHK");
+        $manager->persist($kevin);
+
 
 
         //Création générateur de données faker

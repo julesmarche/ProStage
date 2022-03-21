@@ -1,45 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
+	{{ form_start(formulaireAjoutStage,{ 'attr':{ 'novalidate': 'novalidate' }}) }}
 
- {{ form_start(formulaireAjoutStage,{ 'attr':{ 'novalidate': 'novalidate' }}) }}
 
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<h3 class="text-center">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="text-center">
 					Formulaire de saisie d'un stage et de son entreprise
-			</h3>
+				</h3>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="row">
-                    {{ form_row( formulaireAjoutStage.titre) }}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+						{{ form_row( formulaireAjoutStage.titre) }}
+				</div>
+				<div class="row">
+						{{ form_row( formulaireAjoutStage.descriptionMissions) }}
+				</div>
+				<div class="row">
+						{{ form_row( formulaireAjoutStage.emailContact) }}
+				</div>
+				<div class="row">
+						{{ form_row( formulaireAjoutStage.entreprise) }}
+				</div>
+				<div class="row">
+						{{ form_row( formulaireAjoutStage.typeFormation) }}
+				</div>
 			</div>
-			<div class="row">
-                    {{ form_row( formulaireAjoutStage.descriptionMissions) }}
-			</div>
-			<div class="row">
-                    {{ form_row( formulaireAjoutStage.emailContact) }}
-			</div>
-			<div class="row">
-                    {{ form_row( formulaireAjoutStage.entreprise) }}
-			</div>
-			<div class="row">
-                    {{ form_row( formulaireAjoutStage.typeFormation) }}
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-12">
+				<button type="submit" class="btn btn-outline-primary">Enregistrer</button>
 			</div>
 		</div>
 	</div>
 	<br>
-	<div class="row">
-		<div class="col-md-12">
-            <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
-		</div>
-	</div>
-</div>
-<br>
-{{ form_end(formulaireAjoutStage) }}
-
+	{{ form_end(formulaireAjoutStage) }}
 {% endblock %}
